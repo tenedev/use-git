@@ -1,4 +1,4 @@
-import { diff } from "./diff"
+import utils from "../../internal"
 
 /**
  * Check whether the working tree contains unstaged changes.
@@ -18,16 +18,5 @@ import { diff } from "./diff"
  * @since 0.2.0
  */
 export async function hasDiff(): Promise<boolean> {
-  try {
-    await diff(undefined, undefined, {
-      flags: ["--quiet"],
-    })
-    return false
-  } catch (err) {
-    if (err instanceof Error && "exitCode" in err && err.exitCode === 1) {
-      return true
-    }
-
-    throw err
-  }
+  return !(await utils.runCmdSafe("diff", ["--quiet"]))
 }
