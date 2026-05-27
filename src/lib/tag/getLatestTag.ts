@@ -50,7 +50,7 @@ import utils from "../../internal"
 export async function getLatestTag(
   /** Optional branch, commit, or ref */
   branch?: string,
-) {
+): Promise<string | null> {
   try {
     const tag = await utils.runCmd("describe", [branch, "--tags", "--abbrev=0"])
     return tag
