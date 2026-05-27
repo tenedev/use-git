@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-27T09:40:57.121Z",
-  "totalExports": 95,
+  "generatedAt": "2026-05-27T10:44:28.937Z",
+  "totalExports": 97,
   "duplicateCount": 0,
   "exports": [
     {
@@ -220,11 +220,27 @@
       "hint": null
     },
     {
+      "name": "createTempRepo",
+      "kind": "FunctionDeclaration",
+      "count": 1,
+      "isDuplicate": false,
+      "files": ["test/utils/git.ts"],
+      "hint": null
+    },
+    {
       "name": "currentBranch",
       "kind": "FunctionDeclaration",
       "count": 1,
       "isDuplicate": false,
       "files": ["src/lib/branch/currentBranch.ts"],
+      "hint": null
+    },
+    {
+      "name": "cwd",
+      "kind": "FunctionDeclaration",
+      "count": 1,
+      "isDuplicate": false,
+      "files": ["src/lib/info/os.ts"],
       "hint": null
     },
     {
