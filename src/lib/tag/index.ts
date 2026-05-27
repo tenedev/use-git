@@ -3,6 +3,7 @@
 export * from "./createAnnotatedTag"
 export * from "./createTag"
 export * from "./deleteTag"
+export * from "./getLatestTag"
 export * from "./getSemverTags"
 export * from "./getTags"
 export * from "./hasTag"

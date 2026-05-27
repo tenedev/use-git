@@ -5,6 +5,7 @@ export type Category =
   | "clone"
   | "config"
   | "commit"
+  | "describe"
   | "diff"
   | "fetch"
   | "init"

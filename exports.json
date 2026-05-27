@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-01-30T07:14:37.375Z",
-  "totalExports": 94,
+  "generatedAt": "2026-05-27T09:40:57.121Z",
+  "totalExports": 95,
   "duplicateCount": 0,
   "exports": [
     {
@@ -369,6 +369,14 @@
       "count": 1,
       "isDuplicate": false,
       "files": ["src/lib/branch/getDefaultBranch.ts"],
+      "hint": null
+    },
+    {
+      "name": "getLatestTag",
+      "kind": "FunctionDeclaration",
+      "count": 1,
+      "isDuplicate": false,
+      "files": ["src/lib/tag/getLatestTag.ts"],
       "hint": null
     },
     {
