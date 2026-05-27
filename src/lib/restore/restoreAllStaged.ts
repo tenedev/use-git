@@ -1,4 +1,4 @@
-import { restore } from "./restore"
+import type { Git } from "../../Git"
 
 /**
  * Restore all staged files back to HEAD, keeping working tree changes.
@@ -10,6 +10,6 @@ import { restore } from "./restore"
  *
  * @since 0.3.0
  */
-export function restoreAllStaged(): Promise<string> {
-  return restore(".", { flags: ["--staged"] })
+export function restoreAllStaged(this: Git): Promise<string> {
+  return this.restore(".", { flags: ["--staged"] })
 }

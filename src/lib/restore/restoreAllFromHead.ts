@@ -1,4 +1,4 @@
-import { restore } from "./restore"
+import type { Git } from "../../Git"
 
 /**
  * Restore all files in both the index and working tree from HEAD.
@@ -12,8 +12,8 @@ import { restore } from "./restore"
  *
  * @since 0.3.0
  */
-export function restoreAllFromHead(): Promise<string> {
-  return restore(".", {
+export function restoreAllFromHead(this: Git): Promise<string> {
+  return this.restore(".", {
     "--source": "HEAD",
     flags: ["--staged", "--worktree"],
   })

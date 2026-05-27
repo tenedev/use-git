@@ -1,21 +1,25 @@
-import * as ug from "./lib/index"
-import { setCwd } from "./state"
+import { Git } from "./Git"
 
-interface CreateGit {
-  cwd?: string
-  debug?: boolean
+export * from "./Git"
+export * from "./lib/types"
+
+/**
+ * Creates a new Git instance.
+ * Backward compatible helper for the new class-based API.
+ *
+ * @example
+ * ```ts
+ * const repo = createGit({ cwd: './repo' })
+ * ```
+ */
+export function createGit(opts: { cwd?: string; debug?: boolean } = {}): Git {
+  if (opts.debug) process.env.DEBUG = "true"
+  return new Git({ cwd: opts.cwd })
 }
 
-export function createGit({
-  cwd = ".",
-  debug = false,
-}: CreateGit = {}): typeof ug {
-  if (debug) process.env.DEBUG = "true"
+/**
+ * Default Git instance pointing to the current working directory.
+ */
+export const git = new Git()
 
-  setCwd(cwd)
-
-  return Object.assign(Object.create(ug))
-}
-
-export const git: typeof ug = createGit()
 export default git

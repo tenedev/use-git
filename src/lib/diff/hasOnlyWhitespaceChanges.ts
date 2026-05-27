@@ -1,5 +1,4 @@
-import { diff } from "./diff"
-import { hasDiff } from "./hasDiff"
+import type { Git } from "../../Git"
 
 /**
  * Check whether all working tree changes are whitespace-only.
@@ -17,12 +16,12 @@ import { hasDiff } from "./hasDiff"
  *
  * @since 0.2.0
  */
-export async function hasOnlyWhitespaceChanges(): Promise<boolean> {
-  const hasChanges = await hasDiff()
+export async function hasOnlyWhitespaceChanges(this: Git): Promise<boolean> {
+  const hasChanges = await this.hasDiff()
   if (!hasChanges) return false
 
   try {
-    await diff(undefined, undefined, {
+    await this.diff(undefined, undefined, {
       flags: ["--ignore-all-space", "--quiet"],
     })
 

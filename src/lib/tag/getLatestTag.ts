@@ -1,4 +1,4 @@
-import utils from "../../internal"
+import type { Git } from "../../Git"
 
 /**
  * Retrieves the latest reachable Git tag.
@@ -48,11 +48,12 @@ import utils from "../../internal"
  * @since 1.2.0
  */
 export async function getLatestTag(
+  this: Git,
   /** Optional branch, commit, or ref */
   branch?: string,
 ) {
   try {
-    const tag = await utils.runCmd("describe", [branch, "--tags", "--abbrev=0"])
+    const tag = await this.runCmd("describe", [branch, "--tags", "--abbrev=0"])
     return tag
   } catch {
     return null

@@ -1,4 +1,4 @@
-import { diff } from "./diff"
+import type { Git } from "../../Git"
 
 /**
  * Show changes between `HEAD` and the working tree.
@@ -14,10 +14,11 @@ import { diff } from "./diff"
  * @since 0.2.0
  */
 export function diffHead(
+  this: Git,
   /**
    * Optional paths to limit the diff output.
    */
   paths?: readonly string[],
 ): Promise<string> {
-  return diff(["HEAD"], paths)
+  return this.diff(["HEAD"], paths)
 }

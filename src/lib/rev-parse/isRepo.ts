@@ -1,8 +1,8 @@
-import utils from "../../internal"
+import type { Git } from "../../Git"
 
 /**
  * @since 0.1.0
  */
-export function isRepo(): Promise<boolean> {
-  return utils.runCmdSafe("rev-parse", ["--is-inside-work-tree"])
+export function isRepo(this: Git): Promise<boolean> {
+  return this.runCmdSafe("rev-parse", ["--is-inside-work-tree"])
 }

@@ -1,4 +1,4 @@
-import { commit } from "./commit"
+import type { Git } from "../../Git"
 
 /**
  * Amend last commit without editing the message.
@@ -10,8 +10,8 @@ import { commit } from "./commit"
  *
  * @since 0.3.0
  */
-export function commitNoEdit(): Promise<string> {
-  return commit(undefined, {
+export function commitNoEdit(this: Git): Promise<string> {
+  return this.commit(undefined, {
     flags: ["--amend", "--no-edit"],
   })
 }

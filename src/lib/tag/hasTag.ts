@@ -1,4 +1,4 @@
-import utils from "../../internal"
+import type { Git } from "../../Git"
 
 /**
  * Checks whether a given Git tag exists.
@@ -22,13 +22,14 @@ import utils from "../../internal"
  * @since 1.0.0
  */
 export async function hasTag(
+  this: Git,
   /**
    * The tag name to check.
    */
   tagName: string,
 ): Promise<boolean> {
   try {
-    await utils.runCmd("rev-parse", [`refs/tags/${tagName}`])
+    await this.runCmd("rev-parse", [`refs/tags/${tagName}`])
     return true
   } catch {
     return false

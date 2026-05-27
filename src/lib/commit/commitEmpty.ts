@@ -1,4 +1,4 @@
-import { commit } from "./commit"
+import type { Git } from "../../Git"
 
 /**
  * Create an empty commit.
@@ -10,8 +10,8 @@ import { commit } from "./commit"
  *
  * @since 0.3.0
  */
-export function commitEmpty(message: string): Promise<string> {
-  return commit(message, {
+export function commitEmpty(this: Git, message: string): Promise<string> {
+  return this.commit(message, {
     flags: ["--allow-empty"],
   })
 }

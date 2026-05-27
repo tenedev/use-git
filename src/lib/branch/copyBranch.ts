@@ -1,5 +1,5 @@
+import type { Git } from "../../Git"
 import utils from "../../internal"
-import { branch } from "./branch"
 
 /**
  * Copy a branch.
@@ -15,6 +15,7 @@ import { branch } from "./branch"
  * @since 1.0.0
  */
 export function copyBranch(
+  this: Git,
   source: string,
   target: string,
   opts: {
@@ -28,7 +29,7 @@ export function copyBranch(
 ): Promise<string> {
   opts = utils.mergeOpts({ force: false }, opts)
 
-  return branch([source, target], {
+  return this.branch([source, target], {
     flags: [opts.force ? "-C" : "--copy"],
   })
 }

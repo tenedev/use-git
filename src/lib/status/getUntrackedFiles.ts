@@ -1,4 +1,4 @@
-import { status } from "./status"
+import type { Git } from "../../Git"
 
 /**
  * Get a list of untracked files in the working tree.
@@ -14,8 +14,8 @@ import { status } from "./status"
  *
  * @since 0.2.0
  */
-export async function getUntrackedFiles(): Promise<string[]> {
-  const res = await status(undefined, {
+export async function getUntrackedFiles(this: Git): Promise<string[]> {
+  const res = await this.status(undefined, {
     flags: ["--porcelain", "--untracked-files=normal"],
   })
 

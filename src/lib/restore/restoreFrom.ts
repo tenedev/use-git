@@ -1,4 +1,4 @@
-import { restore } from "./restore"
+import type { Git } from "../../Git"
 
 /**
  * Restore a file from a specific commit.
@@ -11,8 +11,9 @@ import { restore } from "./restore"
  * @since 0.3.0
  */
 export function restoreFrom(
+  this: Git,
   source: string,
   paths: string | string[],
 ): Promise<string> {
-  return restore(paths, { "--source": source })
+  return this.restore(paths, { "--source": source })
 }

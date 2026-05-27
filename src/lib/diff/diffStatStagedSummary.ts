@@ -1,4 +1,4 @@
-import { diff } from "./diff"
+import type { Git } from "../../Git"
 
 /**
  * Get a short diff summary for staged changes.
@@ -12,8 +12,8 @@ import { diff } from "./diff"
  *
  * @since 0.2.0
  */
-export function diffStatStagedSummary(): Promise<string> {
-  return diff(undefined, undefined, {
+export function diffStatStagedSummary(this: Git): Promise<string> {
+  return this.diff(undefined, undefined, {
     flags: ["--shortstat", "--cached"],
   })
 }

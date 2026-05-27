@@ -1,4 +1,4 @@
-import { commit } from "./commit"
+import type { Git } from "../../Git"
 
 /**
  * Amend the last commit.
@@ -11,10 +11,11 @@ import { commit } from "./commit"
  * @since 0.3.0
  */
 export function commitAmend(
+  this: Git,
   message?: string,
   description?: string,
 ): Promise<string> {
-  return commit(message, description, {
+  return this.commit(message, description, {
     flags: ["--amend"],
   })
 }

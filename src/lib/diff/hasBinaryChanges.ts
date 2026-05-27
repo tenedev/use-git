@@ -1,4 +1,4 @@
-import { diff } from "./diff"
+import type { Git } from "../../Git"
 
 /**
  * Check whether the diff contains binary file changes.
@@ -14,8 +14,8 @@ import { diff } from "./diff"
  *
  * @since 0.2.0
  */
-export async function hasBinaryChanges(): Promise<boolean> {
-  const res = await diff(undefined, undefined, {
+export async function hasBinaryChanges(this: Git): Promise<boolean> {
+  const res = await this.diff(undefined, undefined, {
     flags: ["--numstat"],
   })
 

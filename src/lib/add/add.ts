@@ -1,3 +1,4 @@
+import type { Git } from "../../Git"
 import utils from "../../internal"
 import type { AddOptions } from "../types/AddOptions"
 
@@ -7,10 +8,11 @@ import type { AddOptions } from "../types/AddOptions"
  * @since 0.1.0
  */
 export function add(
+  this: Git,
   args: "." | readonly string[] = ".",
   opts: AddOptions = {},
 ): Promise<string> {
-  return utils.runCmd("add", [
+  return this.runCmd("add", [
     ...utils.buildArgs(opts),
     ...(Array.isArray(args) ? args : [args]),
   ])

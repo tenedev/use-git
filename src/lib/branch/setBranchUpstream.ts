@@ -1,4 +1,4 @@
-import { branch } from "./branch"
+import type { Git } from "../../Git"
 
 /**
  * Set upstream for a branch.
@@ -11,10 +11,11 @@ import { branch } from "./branch"
  * @since 1.0.0
  */
 export function setBranchUpstream(
+  this: Git,
   branchName: string,
   upstream: string,
 ): Promise<string> {
-  return branch(branchName, {
+  return this.branch(branchName, {
     "--set-upstream-to": upstream,
   })
 }

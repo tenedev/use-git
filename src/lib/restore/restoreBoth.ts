@@ -1,4 +1,4 @@
-import { restore } from "./restore"
+import type { Git } from "../../Git"
 
 /**
  * Restore files in both the index and working tree from a given source.
@@ -15,6 +15,7 @@ import { restore } from "./restore"
  * @since 0.3.0
  */
 export function restoreBoth(
+  this: Git,
   paths: string | string[],
   /**
    * The Git tree-ish to restore from.
@@ -29,7 +30,7 @@ export function restoreBoth(
    */
   source: string = "HEAD",
 ): Promise<string> {
-  return restore(paths, {
+  return this.restore(paths, {
     flags: ["--staged", "--worktree"],
     "--source": source,
   })

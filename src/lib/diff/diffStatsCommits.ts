@@ -1,6 +1,6 @@
+import type { Git } from "../../Git"
 import type { DiffStats } from "../types"
 import { parseNumStat } from "../utils"
-import { diff } from "./diff"
 
 /**
  * Get diff statistics between two commits.
@@ -17,6 +17,7 @@ import { diff } from "./diff"
  * @since 0.2.0
  */
 export async function diffStatsCommits(
+  this: Git,
   /**
    * Base commit.
    */
@@ -26,7 +27,7 @@ export async function diffStatsCommits(
    */
   to: string,
 ): Promise<DiffStats> {
-  const res = await diff([from, to], undefined, {
+  const res = await this.diff([from, to], undefined, {
     flags: ["--numstat"],
   })
 

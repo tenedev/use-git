@@ -1,3 +1,4 @@
+import type { Git } from "../../Git"
 import utils from "../../internal"
 import type { StatusOptions } from "../types"
 
@@ -26,6 +27,7 @@ import type { StatusOptions } from "../types"
  * @since 0.1.0
  */
 export function status(
+  this: Git,
   /**
    * Optional pathspecs used to limit the status output to specific files or directories.
    */
@@ -35,5 +37,5 @@ export function status(
    */
   opts: StatusOptions = {},
 ): Promise<string> {
-  return utils.runCmd("status", [...utils.buildArgs(opts), ...(paths ?? [])])
+  return this.runCmd("status", [...utils.buildArgs(opts), ...(paths ?? [])])
 }

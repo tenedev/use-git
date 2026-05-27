@@ -1,4 +1,4 @@
-import { getTags } from "./getTags"
+import type { Git } from "../../Git"
 import { isSemverTag } from "./isSemverTag"
 
 /**
@@ -18,8 +18,8 @@ import { isSemverTag } from "./isSemverTag"
  *
  * @since 1.0.0
  */
-export async function getSemverTags(): Promise<string[]> {
-  const res = await getTags()
+export async function getSemverTags(this: Git): Promise<string[]> {
+  const res = await this.getTags()
 
   return res.filter(isSemverTag)
 }

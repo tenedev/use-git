@@ -1,4 +1,4 @@
-import { commit } from "./commit"
+import type { Git } from "../../Git"
 
 /**
  * Commit with explicit author.
@@ -14,11 +14,12 @@ import { commit } from "./commit"
  * @since 0.3.0
  */
 export function commitWithAuthor(
+  this: Git,
   message: string,
   author: string,
   description?: string,
 ): Promise<string> {
-  return commit(message, description, {
+  return this.commit(message, description, {
     "--author": author,
   })
 }

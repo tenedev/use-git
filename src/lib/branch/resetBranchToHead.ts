@@ -1,4 +1,4 @@
-import { branch } from "./branch"
+import type { Git } from "../../Git"
 
 /**
  * Reset a branch to HEAD.
@@ -10,8 +10,8 @@ import { branch } from "./branch"
  *
  * @since 1.0.0
  */
-export function resetBranchToHead(name: string): Promise<string> {
-  return branch(name, {
+export function resetBranchToHead(this: Git, name: string): Promise<string> {
+  return this.branch(name, {
     flags: ["--force"],
   })
 }

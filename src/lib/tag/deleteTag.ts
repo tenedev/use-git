@@ -1,4 +1,4 @@
-import { tag } from "./tag"
+import type { Git } from "../../Git"
 
 /**
  * Deletes a local Git tag.
@@ -19,6 +19,7 @@ import { tag } from "./tag"
  * @since 1.0.0
  */
 export function deleteTag(
+  this: Git,
   /**
    * The name of the tag to delete.
    *
@@ -27,5 +28,5 @@ export function deleteTag(
    */
   tagName: string,
 ): Promise<string> {
-  return tag({ "--delete": tagName })
+  return this.tag({ "--delete": tagName })
 }

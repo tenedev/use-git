@@ -1,6 +1,6 @@
+import type { Git } from "../../Git"
 import utils from "../../internal"
 import type { CreateTagOptions, TagOptions } from "../types"
-import { tag } from "./tag"
 
 /**
  * Creates an annotated Git tag with a message.
@@ -31,6 +31,7 @@ import { tag } from "./tag"
  * @since 1.0.0
  */
 export function createAnnotatedTag(
+  this: Git,
   /**
    * The name of the tag to create.
    *
@@ -60,7 +61,7 @@ export function createAnnotatedTag(
     flags.push("--force")
   }
 
-  return tag(tagName, {
+  return this.tag(tagName, {
     flags,
     "--message": message,
   })

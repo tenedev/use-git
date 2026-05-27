@@ -1,4 +1,4 @@
-import { restore } from "./restore"
+import type { Git } from "../../Git"
 
 /**
  * Restore files from `HEAD`, discarding both staged and unstaged changes.
@@ -10,8 +10,11 @@ import { restore } from "./restore"
  *
  * @since 0.3.0
  */
-export function restoreFromHead(paths: string | string[]): Promise<string> {
-  return restore(paths, {
+export function restoreFromHead(
+  this: Git,
+  paths: string | string[],
+): Promise<string> {
+  return this.restore(paths, {
     flags: ["--staged", "--worktree"],
     "--source": "HEAD",
   })

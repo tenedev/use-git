@@ -1,4 +1,4 @@
-import { diff } from "./diff"
+import type { Git } from "../../Git"
 
 /**
  * Compare two files directly, even if they are outside a Git repository.
@@ -11,6 +11,7 @@ import { diff } from "./diff"
  * @since 0.2.0
  */
 export function diffFiles(
+  this: Git,
   /**
    * First file path.
    */
@@ -20,7 +21,7 @@ export function diffFiles(
    */
   fileB: string,
 ): Promise<string> {
-  return diff([fileA, fileB], undefined, {
+  return this.diff([fileA, fileB], undefined, {
     flags: ["--no-index"],
   })
 }

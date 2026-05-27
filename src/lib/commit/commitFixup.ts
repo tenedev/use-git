@@ -1,4 +1,4 @@
-import { commit } from "./commit"
+import type { Git } from "../../Git"
 
 /**
  * Create a fixup commit for autosquash.
@@ -10,8 +10,8 @@ import { commit } from "./commit"
  *
  * @since 0.3.0
  */
-export function commitFixup(commitId: string): Promise<string> {
-  return commit(undefined, {
+export function commitFixup(this: Git, commitId: string): Promise<string> {
+  return this.commit(undefined, {
     "--fixup": commitId,
   })
 }
