@@ -1,3 +1,4 @@
+import type { Git } from "../../git"
 import utils from "../../internal"
 import type { CloneOptions } from "../types"
 
@@ -6,6 +7,10 @@ import type { CloneOptions } from "../types"
  *
  * @since 0.1.0
  */
-export function clone(repo: string, opts: CloneOptions = {}): Promise<string> {
-  return utils.runCmd("clone", [...utils.buildArgs(opts), repo, opts.dir])
+export function clone(
+  this: Git,
+  repo: string,
+  opts: CloneOptions = {},
+): Promise<string> {
+  return this.runCmd("clone", [...utils.buildArgs(opts), repo, opts.dir])
 }

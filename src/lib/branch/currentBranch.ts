@@ -1,4 +1,4 @@
-import { branch } from "./branch"
+import type { Git } from "../../git"
 
 /**
  * Get the current branch name.
@@ -11,8 +11,8 @@ import { branch } from "./branch"
  *
  * @since 1.0.0
  */
-export function currentBranch(): Promise<string> {
-  return branch({
+export function currentBranch(this: Git): Promise<string> {
+  return this.branch({
     flags: ["--show-current"],
   })
 }

@@ -1,6 +1,5 @@
+import type { Git } from "../../git"
 import utils from "../../internal"
-import { branch } from "./branch"
-import { branchExists } from "./branchExists"
 
 /**
  * Rename an existing branch.
@@ -16,6 +15,7 @@ import { branchExists } from "./branchExists"
  * @since 1.0.0
  */
 export async function renameBranch(
+  this: Git,
   from: string,
   to: string,
   opts: {
@@ -29,13 +29,13 @@ export async function renameBranch(
 ): Promise<string> {
   opts = utils.mergeOpts({ force: false }, opts)
 
-  if (!opts.force && (await branchExists(to))) {
+  if (!opts.force && (await this.branchExists(to))) {
     throw new Error(
       `Cannot rename branch "${from}" to "${to}": a branch named "${to}" already exists. Use { force: true } to overwrite it.`,
     )
   }
 
-  return branch([from, to], {
+  return this.branch([from, to], {
     flags: [opts.force ? "-M" : "--move"],
   })
 }

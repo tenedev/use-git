@@ -1,3 +1,5 @@
+export type GitArgs = ReadonlyArray<string | boolean | undefined>
+
 export type Category =
   | "add"
   | "branch"
@@ -22,3 +24,8 @@ export type Category =
   | "status"
   | "switch"
   | "tag"
+
+export interface CreateGit {
+  cwd?: string
+  debug?: boolean
+}

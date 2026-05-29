@@ -1,3 +1,4 @@
+import type { Git } from "../../git"
 import utils from "../../internal"
 import type { BranchOptions } from "../types"
 
@@ -33,6 +34,7 @@ export function branch(
 ): Promise<string>
 
 export function branch(
+  this: Git,
   arg1?: string | [string, string] | BranchOptions,
   arg2: BranchOptions = {},
 ): Promise<string> {
@@ -42,7 +44,7 @@ export function branch(
   const opts =
     arg1 && typeof arg1 === "object" && !Array.isArray(arg1) ? arg1 : arg2
 
-  return utils.runCmd("branch", [
+  return this.runCmd("branch", [
     ...utils.buildArgs(opts),
     ...(names ? (Array.isArray(names) ? names : [names]) : []),
   ])

@@ -1,12 +1,12 @@
-import { listAllBranches } from "./listAllBranches"
+import type { Git } from "../../git"
 
 /**
  * Get the repository default branch.
  *
  * @since 1.0.0
  */
-export async function getDefaultBranch(): Promise<string | undefined> {
-  const res = await listAllBranches("json")
+export async function getDefaultBranch(this: Git): Promise<string | undefined> {
+  const res = await this.listAllBranches("json")
   if (!res.head) return undefined
 
   const parts = res.head.split("/")
