@@ -1,4 +1,4 @@
-import { commit } from "./commit"
+import type { Git } from "../../git"
 
 /**
  * Commit all tracked changes.
@@ -11,10 +11,11 @@ import { commit } from "./commit"
  * @since 0.3.0
  */
 export function commitAll(
+  this: Git,
   message: string,
   description?: string,
 ): Promise<string> {
-  return commit(message, description, {
+  return this.commit(message, description, {
     flags: ["--all"],
   })
 }

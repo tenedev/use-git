@@ -1,6 +1,6 @@
+import type { Git } from "../../git"
 import type { DiffStats } from "../types"
 import { parseNumStat } from "../utils"
-import { diff } from "./diff"
 
 /**
  * Get diff statistics for staged changes.
@@ -16,8 +16,8 @@ import { diff } from "./diff"
  *
  * @since 0.2.0
  */
-export async function diffStatsStaged(): Promise<DiffStats> {
-  const res = await diff(undefined, undefined, {
+export async function diffStatsStaged(this: Git): Promise<DiffStats> {
+  const res = await this.diff(undefined, undefined, {
     flags: ["--cached", "--numstat"],
   })
 

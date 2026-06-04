@@ -1,4 +1,4 @@
-import { diff } from "./diff"
+import type { Git } from "../../git"
 
 /**
  * Get a list of files changed in the working tree.
@@ -17,8 +17,8 @@ import { diff } from "./diff"
  *
  * @since 0.2.0
  */
-export async function getChangedFiles(): Promise<string[]> {
-  const res = await diff(undefined, undefined, {
+export async function getChangedFiles(this: Git): Promise<string[]> {
+  const res = await this.diff(undefined, undefined, {
     flags: ["--name-only"],
   })
 

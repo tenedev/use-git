@@ -1,5 +1,4 @@
-import { diff } from "./diff"
-import { hasDiff } from "./hasDiff"
+import type { Git } from "../../git"
 
 /**
  * Check whether all changes are end-of-line only (CRLF ↔ LF).
@@ -15,12 +14,12 @@ import { hasDiff } from "./hasDiff"
  *
  * @since 0.2.0
  */
-export async function hasOnlyEOLChanges(): Promise<boolean> {
-  const hasChanges = await hasDiff()
+export async function hasOnlyEOLChanges(this: Git): Promise<boolean> {
+  const hasChanges = await this.hasDiff()
   if (!hasChanges) return false
 
   try {
-    await diff(undefined, undefined, {
+    await this.diff(undefined, undefined, {
       flags: ["--ignore-cr-at-eol", "--quiet"],
     })
 

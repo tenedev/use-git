@@ -1,4 +1,4 @@
-import { diff } from "./diff"
+import type { Git } from "../../git"
 
 /**
  * Show changes between two commits.
@@ -14,9 +14,9 @@ import { diff } from "./diff"
  * @since 0.2.0
  */
 export function diffCommits(
-  /**
+  this: Git /**
    * Base commit.
-   */
+   */,
   from: string,
   /**
    * Target commit.
@@ -27,5 +27,5 @@ export function diffCommits(
    */
   paths?: readonly string[],
 ): Promise<string> {
-  return diff([from, to], paths)
+  return this.diff([from, to], paths)
 }

@@ -1,5 +1,4 @@
-import { getTags } from "./getTags"
-import { isSemverTag } from "./isSemverTag"
+import type { Git } from "../../git"
 
 /**
  * Retrieves all Git tags from the repository and filters only those that follow a Semantic Version (SemVer) format.
@@ -18,8 +17,8 @@ import { isSemverTag } from "./isSemverTag"
  *
  * @since 1.0.0
  */
-export async function getSemverTags(): Promise<string[]> {
-  const res = await getTags()
+export async function getSemverTags(this: Git): Promise<string[]> {
+  const res = await this.getTags()
 
-  return res.filter(isSemverTag)
+  return res.filter(this.isSemverTag)
 }

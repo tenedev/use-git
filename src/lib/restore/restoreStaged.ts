@@ -1,4 +1,4 @@
-import { restore } from "./restore"
+import type { Git } from "../../git"
 
 /**
  * Restore files in the index (staging area) to match HEAD.
@@ -10,6 +10,9 @@ import { restore } from "./restore"
  *
  * @since 0.3.0
  */
-export function restoreStaged(paths: string | string[]): Promise<string> {
-  return restore(paths, { flags: ["--staged"] })
+export function restoreStaged(
+  this: Git,
+  paths: string | string[],
+): Promise<string> {
+  return this.restore(paths, { flags: ["--staged"] })
 }

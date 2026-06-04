@@ -1,4 +1,4 @@
-import { diff } from "./diff"
+import type { Git } from "../../git"
 
 /**
  * Get a list of files that are currently staged.
@@ -16,8 +16,8 @@ import { diff } from "./diff"
  *
  * @since 0.2.0
  */
-export async function getStagedFiles(): Promise<string[]> {
-  const res = await diff(undefined, undefined, {
+export async function getStagedFiles(this: Git): Promise<string[]> {
+  const res = await this.diff(undefined, undefined, {
     flags: ["--cached", "--name-only"],
   })
 

@@ -1,4 +1,4 @@
-import { getChangedFiles } from "./getChangedFiles"
+import type { Git } from "../../git"
 
 /**
  * Get the number of files changed in the working tree.
@@ -15,8 +15,8 @@ import { getChangedFiles } from "./getChangedFiles"
  *
  * @since 0.2.0
  */
-export async function changedFileCount(): Promise<number> {
-  const res = await getChangedFiles()
+export async function changedFileCount(this: Git): Promise<number> {
+  const res = await this.getChangedFiles()
 
   return res.length
 }

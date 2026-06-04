@@ -1,4 +1,4 @@
-import { restore } from "./restore"
+import type { Git } from "../../git"
 
 /**
  * Restore files in the working tree from the index.
@@ -10,6 +10,9 @@ import { restore } from "./restore"
  *
  * @since 0.3.0
  */
-export function restoreWorktree(paths: string | string[]): Promise<string> {
-  return restore(paths, { flags: ["--worktree"] })
+export function restoreWorktree(
+  this: Git,
+  paths: string | string[],
+): Promise<string> {
+  return this.restore(paths, { flags: ["--worktree"] })
 }

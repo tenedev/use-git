@@ -1,3 +1,4 @@
+import type { Git } from "../../git"
 import utils from "../../internal"
 import type { CommitOptions } from "../types"
 
@@ -42,6 +43,7 @@ export function commit(
 ): Promise<string>
 
 export function commit(
+  this: Git,
   message: string | undefined,
   descOrOpts?: string | CommitOptions,
   opts: CommitOptions = {},
@@ -55,7 +57,7 @@ export function commit(
     options = descOrOpts
   }
 
-  return utils.runCmd(
+  return this.runCmd(
     "commit",
     [
       ...utils.buildArgs(options),

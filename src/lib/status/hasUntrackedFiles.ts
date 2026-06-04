@@ -1,4 +1,4 @@
-import { getUntrackedFiles } from "./getUntrackedFiles"
+import type { Git } from "../../git"
 
 /**
  * Check whether the working tree contains untracked files.
@@ -17,6 +17,6 @@ import { getUntrackedFiles } from "./getUntrackedFiles"
  *
  * @since 0.2.0
  */
-export async function hasUntrackedFiles(): Promise<boolean> {
-  return (await getUntrackedFiles()).length > 0
+export async function hasUntrackedFiles(this: Git): Promise<boolean> {
+  return (await this.getUntrackedFiles()).length > 0
 }

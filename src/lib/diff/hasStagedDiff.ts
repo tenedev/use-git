@@ -1,4 +1,4 @@
-import { diff } from "./diff"
+import type { Git } from "../../git"
 
 /**
  * Check whether the index contains staged changes.
@@ -17,9 +17,9 @@ import { diff } from "./diff"
  *
  * @since 0.2.0
  */
-export async function hasStagedDiff(): Promise<boolean> {
+export async function hasStagedDiff(this: Git): Promise<boolean> {
   try {
-    await diff(undefined, undefined, {
+    await this.diff(undefined, undefined, {
       flags: ["--cached", "--quiet"],
     })
     return false
