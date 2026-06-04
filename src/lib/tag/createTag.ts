@@ -1,5 +1,5 @@
+import type { Git } from "../../git"
 import utils from "../../internal"
-import { tag } from "../tag"
 import type { CreateTagOptions, TagOptions } from "../types"
 
 /**
@@ -27,6 +27,7 @@ import type { CreateTagOptions, TagOptions } from "../types"
  * @since 1.0.0
  */
 export function createTag(
+  this: Git,
   /**
    * The name of the tag to create.
    *
@@ -49,7 +50,7 @@ export function createTag(
     flags.push("--force")
   }
 
-  return tag(tagName, {
+  return this.tag(tagName, {
     flags,
   })
 }

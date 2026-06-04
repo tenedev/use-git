@@ -1,5 +1,4 @@
-import { listAllBranches } from "./listAllBranches"
-
+import type { Git } from "../../git"
 /**
  * List local branches.
  *
@@ -11,8 +10,8 @@ import { listAllBranches } from "./listAllBranches"
  *
  * @since 1.0.0
  */
-export async function listBranches(): Promise<string[]> {
-  const res = await listAllBranches("json")
+export async function listBranches(this: Git): Promise<string[]> {
+  const res = await this.listAllBranches("json")
 
   return res.local
 }

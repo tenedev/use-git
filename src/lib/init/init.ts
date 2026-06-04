@@ -1,3 +1,4 @@
+import type { Git } from "../../git"
 import utils from "../../internal"
 import type { InitOptions } from "../types"
 
@@ -8,7 +9,7 @@ import type { InitOptions } from "../types"
  *
  * @since 0.1.0
  */
-export function init(opts: InitOptions = {}): Promise<string> {
+export function init(this: Git, opts: InitOptions = {}): Promise<string> {
   opts = utils.mergeOpts<InitOptions>(
     {
       "--initial-branch": "main",
@@ -16,5 +17,5 @@ export function init(opts: InitOptions = {}): Promise<string> {
     opts,
   )
 
-  return utils.runCmd("init", utils.buildArgs(opts))
+  return this.runCmd("init", utils.buildArgs(opts))
 }

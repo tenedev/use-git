@@ -1,3 +1,4 @@
+import type { Git } from "../../git"
 import utils from "../../internal"
 import type { DiffOptions } from "../types"
 
@@ -19,6 +20,7 @@ import type { DiffOptions } from "../types"
  * @since 0.2.0
  */
 export function diff(
+  this: Git,
   /**
    * Optional commit refs or ranges.
    *
@@ -37,7 +39,7 @@ export function diff(
    */
   opts: DiffOptions = {},
 ): Promise<string> {
-  return utils.runCmd("diff", [
+  return this.runCmd("diff", [
     ...utils.buildArgs(opts),
     ...(refs ?? []),
     ...(paths ? ["--", ...paths] : []),

@@ -1,4 +1,4 @@
-import { diff } from "./diff"
+import type { Git } from "../../git"
 
 /**
  * Show changes for a commit range.
@@ -14,6 +14,7 @@ import { diff } from "./diff"
  * @since 0.2.0
  */
 export function diffRange(
+  this: Git,
   /**
    * Commit range in `A...B` format.
    */
@@ -23,5 +24,5 @@ export function diffRange(
    */
   paths?: readonly string[],
 ): Promise<string> {
-  return diff([range], paths)
+  return this.diff([range], paths)
 }

@@ -1,4 +1,4 @@
-import utils from "../../internal"
+import type { Git } from "../../git"
 
 /**
  * Check whether the working tree contains unstaged changes.
@@ -17,6 +17,6 @@ import utils from "../../internal"
  *
  * @since 0.2.0
  */
-export async function hasDiff(): Promise<boolean> {
-  return !(await utils.runCmdSafe("diff", ["--quiet"]))
+export async function hasDiff(this: Git): Promise<boolean> {
+  return !(await this.runCmdSafe("diff", ["--quiet"]))
 }

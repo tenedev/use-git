@@ -1,4 +1,4 @@
-import { listBranches } from "./listBranches"
+import type { Git } from "../../git"
 
 /**
  * Check if a local branch exists.
@@ -10,8 +10,8 @@ import { listBranches } from "./listBranches"
  *
  * @since 1.0.0
  */
-export async function branchExists(name: string): Promise<boolean> {
-  const res = await listBranches()
+export async function branchExists(this: Git, name: string): Promise<boolean> {
+  const res = await this.listBranches()
 
   return res.includes(name)
 }

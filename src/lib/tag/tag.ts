@@ -1,3 +1,4 @@
+import type { Git } from "../../git"
 import utils from "../../internal"
 import type { TagOptions } from "../types/TagOptions"
 
@@ -29,6 +30,7 @@ export function tag(opts?: TagOptions): Promise<string>
 export function tag(tagName: string, opts?: TagOptions): Promise<string>
 
 export function tag(
+  this: Git,
   tagNameOrOpts?: string | TagOptions,
   opts: TagOptions = {},
 ): Promise<string> {
@@ -40,5 +42,5 @@ export function tag(
     tagName = tagNameOrOpts
   }
 
-  return utils.runCmd("tag", [tagName, ...utils.buildArgs(opts)])
+  return this.runCmd("tag", [tagName, ...utils.buildArgs(opts)])
 }

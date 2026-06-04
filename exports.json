@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-27T09:40:57.121Z",
-  "totalExports": 95,
+  "generatedAt": "2026-06-04T09:30:29.508Z",
+  "totalExports": 93,
   "duplicateCount": 0,
   "exports": [
     {
@@ -65,14 +65,6 @@
       "count": 1,
       "isDuplicate": false,
       "files": ["src/lib/types/BranchOptions.ts"],
-      "hint": null
-    },
-    {
-      "name": "Category",
-      "kind": "TypeAliasDeclaration",
-      "count": 1,
-      "isDuplicate": false,
-      "files": ["src/types/category.ts"],
       "hint": null
     },
     {
@@ -412,11 +404,11 @@
       "hint": null
     },
     {
-      "name": "GitArgs",
+      "name": "Git",
       "kind": "TypeAliasDeclaration",
       "count": 1,
       "isDuplicate": false,
-      "files": ["src/internal.ts"],
+      "files": ["src/git.ts"],
       "hint": null
     },
     {
@@ -705,14 +697,6 @@
       "count": 1,
       "isDuplicate": false,
       "files": ["src/lib/branch/setBranchUpstream.ts"],
-      "hint": null
-    },
-    {
-      "name": "setCwd",
-      "kind": "FunctionDeclaration",
-      "count": 1,
-      "isDuplicate": false,
-      "files": ["src/state.ts"],
       "hint": null
     },
     {

@@ -1,5 +1,5 @@
+import type { Git } from "../../git"
 import utils from "../../internal"
-import { branch } from "./branch"
 
 /**
  * Delete a branch.
@@ -15,6 +15,7 @@ import { branch } from "./branch"
  * @since 1.0.0
  */
 export function deleteBranch(
+  this: Git,
   name: string,
   opts: {
     /**
@@ -27,7 +28,7 @@ export function deleteBranch(
 ): Promise<string> {
   opts = utils.mergeOpts({ force: false }, opts)
 
-  return branch(name, {
+  return this.branch(name, {
     flags: [opts.force ? "-D" : "--delete"],
   })
 }

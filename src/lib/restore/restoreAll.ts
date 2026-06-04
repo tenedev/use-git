@@ -1,4 +1,4 @@
-import { restore } from "./restore"
+import type { Git } from "../../git"
 
 /**
  * Restore all working tree files from the index.
@@ -13,6 +13,6 @@ import { restore } from "./restore"
  *
  * @since 0.3.0
  */
-export function restoreAll(): Promise<string> {
-  return restore()
+export function restoreAll(this: Git): Promise<string> {
+  return this.restore()
 }

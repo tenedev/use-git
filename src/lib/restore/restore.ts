@@ -1,3 +1,4 @@
+import type { Git } from "../../git"
 import utils from "../../internal"
 import type { RestoreOptions } from "../types"
 
@@ -28,13 +29,14 @@ import type { RestoreOptions } from "../types"
  * @since 0.3.0
  */
 export function restore(
+  this: Git,
   /**
    * @default "."
    */
   paths: string | string[] = ".",
   opts: RestoreOptions = {},
 ): Promise<string> {
-  return utils.runCmd("restore", [
+  return this.runCmd("restore", [
     ...utils.buildArgs(opts),
     ...(Array.isArray(paths) ? paths : [paths]),
   ])

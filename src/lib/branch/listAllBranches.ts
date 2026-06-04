@@ -1,7 +1,6 @@
+import type { Git } from "../../git"
 import utils from "../../internal"
 import type { BranchListFormat, BranchListResult } from "../types"
-import { branch } from "./branch"
-
 /**
  * List all branches.
  *
@@ -13,9 +12,10 @@ import { branch } from "./branch"
  * @since 1.0.0
  */
 export async function listAllBranches<T extends BranchListFormat>(
+  this: Git,
   format: T = "flat" as T,
 ): Promise<BranchListResult<T>> {
-  const res = utils.makeList(await branch({ flags: ["--all"] }))
+  const res = utils.makeList(await this.branch({ flags: ["--all"] }))
 
   if (format === "flat") {
     return res as BranchListResult<T>

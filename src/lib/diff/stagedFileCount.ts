@@ -1,4 +1,4 @@
-import { getStagedFiles } from "./getStagedFiles"
+import type { Git } from "../../git"
 
 /**
  * Get the number of staged files.
@@ -14,8 +14,8 @@ import { getStagedFiles } from "./getStagedFiles"
  *
  * @since 0.2.0
  */
-export async function stagedFileCount(): Promise<number> {
-  const files = await getStagedFiles()
+export async function stagedFileCount(this: Git): Promise<number> {
+  const files = await this.getStagedFiles()
 
   return files.length
 }

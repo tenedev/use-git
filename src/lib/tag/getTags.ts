@@ -1,5 +1,5 @@
+import type { Git } from "../../git"
 import utils from "../../internal"
-import { tag } from "./tag"
 
 /**
  * Retrieves all Git tags from the current repository.
@@ -16,6 +16,7 @@ import { tag } from "./tag"
  * @since 1.0.0
  */
 export async function getTags(
+  this: Git,
   /**
    * Optional list of prefixes to remove or replace from the beginning of each tag
    */
@@ -27,7 +28,7 @@ export async function getTags(
    */
   to = "",
 ): Promise<string[]> {
-  const res = await tag({ flags: ["--list"] })
+  const res = await this.tag({ flags: ["--list"] })
 
   return utils.makeList(res, prefixes, to)
 }
