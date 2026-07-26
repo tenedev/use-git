@@ -21,8 +21,8 @@ importers:
         specifier: ^17.0.0
         version: 17.0.4
       release-hub:
-        specifier: ^1.0.0-beta.0
-        version: 1.0.0-beta.0(@types/node@24.10.4)
+        specifier: ^1.0.0-beta.1
+        version: 1.0.0-beta.1(@types/node@24.10.4)
       ts-morph:
         specifier: ^28.0.0
         version: 28.0.0
@@ -786,8 +786,8 @@ packages:
   quansync@1.0.0:
     resolution: {integrity: sha512-5xZacEEufv3HSTPQuchrvV6soaiACMFnq1H8wkVioctoH3TRha9Sz66lOxRwPK/qZj7HPiSveih9yAyh98gvqA==}
 
-  release-hub@1.0.0-beta.0:
-    resolution: {integrity: sha512-t+lDdQ3G8I5KN7OO9sE1PvA9sjQ1DT28mLDOxbtJ/8GfcCRy0bxh/pVafsfQzPRHZiZk+WMhF9Hhk+LHgnzB5A==}
+  release-hub@1.0.0-beta.1:
+    resolution: {integrity: sha512-j3PgVc+Wc1beDW2jY9cvlR1VHX5hKbzpddNYTHXJ+t+5NRA8qn34wy2QSh0Q3KdNwyhn8Djtn7hHSmPtkwofVQ==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -1608,7 +1608,7 @@ snapshots:
 
   quansync@1.0.0: {}
 
-  release-hub@1.0.0-beta.0(@types/node@24.10.4):
+  release-hub@1.0.0-beta.1(@types/node@24.10.4):
     dependencies:
       ansilory: 2.0.1
       figlet: 1.9.4
